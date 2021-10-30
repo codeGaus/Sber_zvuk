@@ -1,0 +1,4 @@
+requests
+flask
+aioboto3
+boto3
