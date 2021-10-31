@@ -18,6 +18,9 @@ model_extractor = VGGFace(model='resnet50',
                           input_shape=(224, 224, 3),
                           pooling='avg')
 
+
+detector._make_predict_function()
+
 border_rel = 0
 base_imgs_scores = []
 video_result = []
@@ -180,7 +183,6 @@ def create_video(source, prefix):
     print(source)
     counter = 0
     frame_no = 1
-
 
     get_main_faces(source)
 
