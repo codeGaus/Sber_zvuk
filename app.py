@@ -41,6 +41,7 @@ def recognize():
 
     print("Uploading content to amazon bucket...")
     s3.upload_file(f'{prefix}_result.mp4', 'hackathon-ecs-49', f'{prefix}_result.mp4')
+    s3.upload_file(f'{prefix}_video.json', 'hackathon-ecs-49', f'{prefix}_video.json')
     print(s3.list_objects(Bucket='hackathon-ecs-49'))
     print("Content upload to amazon bucket completed successfully.")
 

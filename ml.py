@@ -182,6 +182,7 @@ def create_video(source, prefix):
     frame_no = 1
 
     os.system(f"ffmpeg -y -i {source} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
+    print('Convert completed')
     get_main_faces(source)
 
 
