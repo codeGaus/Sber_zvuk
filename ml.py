@@ -193,7 +193,6 @@ def create_video(source, prefix):
 
     overall_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     overall_time = overall_frames / fps
-
     while cap.isOpened():
         ret, frame = cap.read()
         if ret == True:
