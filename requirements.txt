@@ -2,3 +2,10 @@ requests
 flask
 aioboto3
 boto3
+tensorflow
+mtcnn
+keras
+keras_vggface
+h5py
+opencv-python
+pillow
