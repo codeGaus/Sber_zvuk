@@ -180,11 +180,11 @@ def create_video(source, prefix):
     counter = 0
     frame_no = 1
 
-    get_main_faces(f"{prefix}.mp4")
+    get_main_faces(source)
 
-    os.system(f"ffmpeg -y -i {prefix}.mp4 -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
+    os.system(f"ffmpeg -y -i {source} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
 
-    cap = cv2.VideoCapture(f"{prefix}.mp4")
+    cap = cv2.VideoCapture(source)
     fourcc = cv2.VideoWriter_fourcc(*'MP4V')
     width = int(cap.get(3))
     height = int(cap.get(4))

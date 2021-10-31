@@ -37,7 +37,7 @@ def recognize():
         file.write(video_content.content)
     print("The file has been downloaded successfully.")
 
-    create_video(source, prefix)
+    create_video(f'{prefix}.mp4', prefix)
 
     print("Uploading content to amazon bucket...")
     s3.upload_file(f'{prefix}_result.mp4', 'hackathon-ecs-49', f'{prefix}_result.mp4')
