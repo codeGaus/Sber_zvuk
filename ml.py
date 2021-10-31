@@ -1,6 +1,7 @@
 import mtcnn
 from mtcnn.mtcnn import MTCNN
 import tensorflow as tf
+import keras
 from keras_vggface.vggface import VGGFace
 from keras_vggface.utils import preprocess_input
 from keras_vggface.utils import decode_predictions
