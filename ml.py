@@ -1,12 +1,14 @@
+import mtcnn
 from mtcnn.mtcnn import MTCNN
+import tensorflow as tf
 from keras_vggface.vggface import VGGFace
 from keras_vggface.utils import preprocess_input
 from keras_vggface.utils import decode_predictions
 import PIL
+import os
+from urllib import request
 import numpy as np
 import cv2
-import json
-from scipy.spatial.distance import cosine
 
 detector = MTCNN()
 
