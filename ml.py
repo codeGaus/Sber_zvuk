@@ -19,8 +19,6 @@ model_extractor = VGGFace(model='resnet50',
                           pooling='avg')
 
 
-detector._make_predict_function()
-
 border_rel = 0
 base_imgs_scores = []
 video_result = []
