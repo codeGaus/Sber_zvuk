@@ -180,7 +180,7 @@ def create_video(source, prefix):
     counter = 0
     frame_no = 1
 
-    get_main_faces(source)
+    get_main_faces(f"{prefix}.mp4")
 
     os.system(f"ffmpeg -y -i {prefix}.mp4 -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
 
