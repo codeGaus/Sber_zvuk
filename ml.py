@@ -5,6 +5,7 @@ import keras
 from keras_vggface.vggface import VGGFace
 from keras_vggface.utils import preprocess_input
 from keras_vggface.utils import decode_predictions
+from scipy.spatial.distance import cosine
 import PIL
 import os
 import json
@@ -184,10 +185,10 @@ def create_video(source, prefix):
     counter = 0
     frame_no = 1
 
-    get_main_faces(source)
-
     os.system(f"ffmpeg -y -i {source} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
     print('Convert completed')
+
+    get_main_faces(source)
 
     cap = cv2.VideoCapture(source)
     fourcc = cv2.VideoWriter_fourcc(*'MP4V')
