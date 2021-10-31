@@ -11,6 +11,7 @@ from urllib import request
 import numpy as np
 import cv2
 
+keras.backend.clear_session()
 detector = MTCNN()
 
 model_extractor = VGGFace(model='resnet50',
