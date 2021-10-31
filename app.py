@@ -31,11 +31,11 @@ def recognize():
     prefix = request.args.get('prefix', default='default_name', type=str)
     source = request.args.get('source', default='https://hackaton.sber-zvuk.com/hackathon_part_1.mp4', type=str)
 
-    # print("The file download has started...Wait")
-    # with open(f"content/{prefix}.mp4", 'wb') as file:
-    #     video_content = requests.get(source)
-    #     file.write(video_content.content)
-    # print("The file has been downloaded successfully.")
+    print("The file download has started...Wait")
+    with open(f"{prefix}.mp4", 'wb') as file:
+        video_content = requests.get(source)
+        file.write(video_content.content)
+    print("The file has been downloaded successfully.")
 
     create_video(source, prefix)
 

@@ -6,6 +6,7 @@ from keras_vggface.utils import preprocess_input
 from keras_vggface.utils import decode_predictions
 import PIL
 import os
+import json
 from urllib import request
 import numpy as np
 import cv2
@@ -181,12 +182,14 @@ def create_video(source, prefix):
 
     get_main_faces(source)
 
-    cap = cv2.VideoCapture(source)
+    os.system(f"ffmpeg -y -i {prefix}.mp4 -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
+
+    cap = cv2.VideoCapture(f"{prefix}.mp4")
     fourcc = cv2.VideoWriter_fourcc(*'MP4V')
     width = int(cap.get(3))
     height = int(cap.get(4))
     size = (width, height)
-    out = cv2.VideoWriter(f'{prefix}_result.mp4', fourcc, 25.0, size)
+    out = cv2.VideoWriter(f'{prefix}_result_noaudio.mp4', fourcc, 25.0, size)
 
     overall_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     overall_time = overall_frames / fps
@@ -213,6 +216,9 @@ def create_video(source, prefix):
 
     cap.release()
     out.release()
+
+    os.system(f"ffmpeg -i {prefix}_result_noaudio.mp4 -vcodec libx264 {prefix}_result_compressed.mp4")
+    os.system(f"ffmpeg -i {prefix}_result_compressed.mp4 -i audio_file_lpcm.pcm -c:v copy -c:a aac {prefix}_result.mp4")
 
     with open(f'{prefix}_video.json', 'w') as f:
         f.write(json.dumps(video_result))
