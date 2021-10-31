@@ -177,12 +177,13 @@ def get_main_faces(source):
 
 
 def create_video(source, prefix):
+    print(source)
     counter = 0
     frame_no = 1
 
+    os.system(f"ffmpeg -y -i {source} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
     get_main_faces(source)
 
-    os.system(f"ffmpeg -y -i {source} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 audio_file_lpcm.pcm")
 
     cap = cv2.VideoCapture(source)
     fourcc = cv2.VideoWriter_fourcc(*'MP4V')
