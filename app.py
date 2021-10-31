@@ -3,7 +3,7 @@ import aioboto3
 import boto3
 from flask import request
 import requests
-from ml import create_video
+#from ml import create_video
 from static.constants import ENDPOINT_URL, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 session = boto3.session.Session()
@@ -37,11 +37,11 @@ def recognize():
         file.write(video_content.content)
     print("The file has been downloaded successfully.")
 
-    create_video(f'{prefix}.mp4', prefix)
+    #create_video(f'{prefix}.mp4', prefix)
 
     print("Uploading content to amazon bucket...")
-    s3.upload_file(f'{prefix}_result.mp4', 'hackathon-ecs-49', f'{prefix}_result.mp4')
-    s3.upload_file(f'{prefix}_video.json', 'hackathon-ecs-49', f'{prefix}_video.json')
+    s3.upload_file(f'{prefix}.mp4', 'hackathon-ecs-49', f'{prefix}_result.mp4') #f'{prefix}_result.mp4'
+    #s3.upload_file(f'{prefix}_video.json', 'hackathon-ecs-49', f'{prefix}_video.json')
     print(s3.list_objects(Bucket='hackathon-ecs-49'))
     print("Content upload to amazon bucket completed successfully.")
 
