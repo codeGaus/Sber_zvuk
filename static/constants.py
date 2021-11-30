@@ -1,3 +1,0 @@
-ENDPOINT_URL = 'https://obs.ru-moscow-1.hc.sbercloud.ru'
-AWS_ACCESS_KEY_ID = '7PO1XFOEGXMKHSJYA29G'
-AWS_SECRET_ACCESS_KEY = '0akWfVavYg67aqlsPnx4MMOX2LwnTNeTfjwBiQNs'
